@@ -1,0 +1,9 @@
+com\cw\enums\OrderStatus.class
+com\cw\enums\CartStatus.class
+com\cw\model\Customer.class
+com\cw\model\Book.class
+com\cw\model\Cart.class
+com\cw\dao\AuthorDAO.class
+com\cw\model\Author.class
+com\cw\resource\AuthorResource.class
+com\cw\model\Order.class
