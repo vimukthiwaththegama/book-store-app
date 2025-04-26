@@ -22,7 +22,7 @@ import javax.ws.rs.core.Response;
  *
  * @author VimukthiWaththegama
  */
-@Path("/author")
+@Path("/authors")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class AuthorResource {

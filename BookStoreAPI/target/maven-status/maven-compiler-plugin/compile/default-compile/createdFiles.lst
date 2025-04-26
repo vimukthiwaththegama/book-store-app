@@ -4,6 +4,8 @@ com\cw\model\Customer.class
 com\cw\model\Book.class
 com\cw\model\Cart.class
 com\cw\dao\AuthorDAO.class
+com\cw\dao\BookDAO.class
 com\cw\model\Author.class
 com\cw\resource\AuthorResource.class
 com\cw\model\Order.class
+com\cw\resource\BookResource.class

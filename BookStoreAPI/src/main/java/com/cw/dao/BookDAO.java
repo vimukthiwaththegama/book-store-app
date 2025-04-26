@@ -56,7 +56,7 @@ public class BookDAO {
             Response authorResponse = authorDAO.getAuthorById(book.getAuthorId());
             if (authorResponse.getStatus() != Response.Status.OK.getStatusCode()) {
                 return Response.status(Response.Status.BAD_REQUEST)
-                        .entity("Author does not exist")
+                        .entity("Book does not exist")
                         .build();
             }
 
@@ -86,20 +86,35 @@ public class BookDAO {
             Response authorResponse = authorDAO.getAuthorById(book.getAuthorId());
             if (authorResponse.getStatus() != Response.Status.OK.getStatusCode()) {
                 return Response.status(Response.Status.BAD_REQUEST)
-                        .entity("Author does not exist")
+                        .entity("Book does not exist")
                         .build();
             }
 
             for (Book existingBook : bookList) {
                 if (existingBook.getBookId().equals(book.getBookId())) {
+                    if (book.getBookId() != null) {
+                        return Response.status(Response.Status.CONFLICT).
+                                entity("You can only change the price and quantity!").build();
+                    }
+                    if (book.getAuthorId() != null) {
+                        return Response.status(Response.Status.CONFLICT).
+                                entity("You can only change the price and quantity!").build();
+                    }
                     if (book.getBookName() != null) {
-                        existingBook.setBookName(book.getBookName());
+                        return Response.status(Response.Status.CONFLICT).
+                                entity("You can only change the price and quantity!").build();
                     }
                     if (book.getIsbn() != null) {
-                        existingBook.setIsbn(book.getIsbn());
+                        return Response.status(Response.Status.CONFLICT).
+                                entity("You can only change the price and quantity!").build();
                     }
                     if (book.getPublicYear() != null) {
-                        existingBook.setPublicYear(book.getPublicYear());
+                        return Response.status(Response.Status.CONFLICT).
+                                entity("You can only change the price and quantity!").build();
+                    }
+                    if (book.getAuthorId() != null) {
+                        return Response.status(Response.Status.CONFLICT).
+                                entity("You can only change the price and quantity!").build();
                     }
                     if (book.getPrice() >= 0) {
                         existingBook.setPrice(book.getPrice());
@@ -107,8 +122,8 @@ public class BookDAO {
                     if (book.getQuantity() > 0) {
                         existingBook.setQuantity(book.getQuantity());
                     }
-                    return Response.status(Response.Status.CONFLICT)
-                            .entity("Book already exists! " + book.getBookId())
+                    return Response.status(Response.Status.CREATED)
+                            .entity("Book updated successfully!! " + book.getBookId())
                             .build();
                 }
             }
@@ -123,6 +138,7 @@ public class BookDAO {
         }
     }
 
+    //Remove from the list by Id
     public Response deleteBook(Long id) {
         try {
             if (id == null) {
