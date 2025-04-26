@@ -20,6 +20,9 @@ public class Book {
     private double price;
     private int quantity;
 
+    Book(){
+    }
+
     Book(Long bookId, String bookName, Long authorId, String isbn, Date publicYear, double price, int quantity) {
         this.bookId = bookId;
         this.bookName = bookName;
@@ -38,7 +41,7 @@ public class Book {
         return bookName;
     }
 
-    public Long authorId() {
+    public Long getAuthorId() {
         return authorId;
     }
 

@@ -7,49 +7,42 @@ package com.cw.model;
 /**
  * @author VimukthiWaththegama
  */
-public class Author
-{
+public class Author {
 
     private Long authorID;
     private String name;
     private String biography;
 
-    Author(){
+    Author() {
     }
-    Author( Long authorId, String name, String biography )
-    {
+
+    Author(Long authorId, String name, String biography) {
         this.authorID = authorId;
         this.name = name;
         this.biography = biography;
     }
 
-    public Long getAuthorId()
-    {
+    public Long getAuthorId() {
         return authorID;
     }
 
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
-    public String getBiography()
-    {
+    public String getBiography() {
         return biography;
     }
 
-    public void setAuthorId( Long authorId )
-    {
+    public void setAuthorId(Long authorId) {
         this.authorID = authorId;
     }
 
-    public void setName(String name)
-    {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public void setBiography(String biography)
-    {
+    public void setBiography(String biography) {
         this.biography = biography;
     }
 }
