@@ -19,6 +19,9 @@ public class Cart {
     private double totalPrice;
     private CartStatus status;
 
+    Cart() {
+    }
+
     Cart(Long cartId, Long customerId, List<Book> bookList, double totalPrice, CartStatus status) {
         this.cartId = cartId;
         this.customerId = customerId;

@@ -106,20 +106,15 @@ public class CustomerDAO {
                 return Response.status(Response.Status.BAD_REQUEST)
                         .entity("Customer cannot be null!").build();
             }
-
-            if (getCustomerById(customerId) == null) {
-                return Response.status(Response.Status.NOT_FOUND)
-                        .entity("Customernot found with ID: " + customerId)
-                        .build();
-            }
+            
             customerList.remove(getCustomerById(customerId));
 
             return Response.status(Response.Status.OK)
-                    .entity("Book deleted successfully! " + customerId)
+                    .entity("Customer deleted successfully! " + customerId)
                     .build();
         } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-                    .entity("Error deletin Customer: " + e.getMessage())
+                    .entity("Error deleting Customer: " + e.getMessage())
                     .build();
         }
     }

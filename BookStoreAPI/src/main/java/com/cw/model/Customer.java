@@ -14,6 +14,9 @@ public class Customer {
     private String customerName;
     private String email;
 
+    Customer() {
+    }
+
     Customer(Long customerId, String customerName, String email) {
         this.customerId = customerId;
         this.customerName = customerName;
