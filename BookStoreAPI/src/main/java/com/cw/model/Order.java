@@ -17,6 +17,9 @@ public class Order {
     private OrderStatus orderStatus;
     private double totalPrice;
 
+    Order() {
+    }
+
     Order(Long orderId, Long customerId, OrderStatus orderStatus, double totalPrice) {
         this.orderId = orderId;
         this.customerId = customerId;

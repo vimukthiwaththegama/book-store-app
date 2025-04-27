@@ -38,9 +38,9 @@ public class CustomerResource {
     @GET
     @Path("/{id}")
     public Response getCustomerById(@PathParam("id") Long id) {
-        Response customer =  customerDAO.getCustomerById(id);
-        if(customer == null){
-        throw new CustomerNotFoundException("Customer with ID " + id + " not found");
+        Response customer = customerDAO.getCustomerById(id);
+        if (customer == null) {
+            throw new CustomerNotFoundException("Customer with ID " + id + " not found");
         }
         return customer;
     }
@@ -56,6 +56,7 @@ public class CustomerResource {
     }
 
     @DELETE
+    @Path("/{id}")
     public Response deleteCustomer(@PathParam("id") Long id) {
         return customerDAO.deleteCustomer(id);
     }

@@ -32,7 +32,7 @@ public class CartDAO {
         try {
             if (id == null) {
                 return Response.status(Response.Status.NOT_FOUND).
-                        entity("CArt Id is null!").
+                        entity("Cart Id is null!").
                         build();
             }
             for (Cart cart : cartList) {
@@ -65,7 +65,7 @@ public class CartDAO {
                             build();
                 }
             }
-            if (!Objects.equals(cart.getCustomerId(), customerDAO.getCustomerById(cart.getCartId()))) {
+            if (customerDAO.getCustomerById(cart.getCustomerId()) == null) {
                 return Response.status(Response.Status.BAD_REQUEST).
                         entity("Customer does not exist! " + cart.getCartId()).
                         build();
