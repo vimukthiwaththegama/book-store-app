@@ -5,6 +5,7 @@
 package com.cw.resource;
 
 import com.cw.dao.CustomerDAO;
+import com.cw.exception.CustomerNotFoundException;
 import com.cw.model.Customer;
 import java.util.List;
 import javax.ws.rs.Consumes;
@@ -37,7 +38,11 @@ public class CustomerResource {
     @GET
     @Path("/{id}")
     public Response getCustomerById(@PathParam("id") Long id) {
-        return customerDAO.getCustomerById(id);
+        Response customer =  customerDAO.getCustomerById(id);
+        if(customer == null){
+        throw new CustomerNotFoundException("Customer with ID " + id + " not found");
+        }
+        return customer;
     }
 
     @POST

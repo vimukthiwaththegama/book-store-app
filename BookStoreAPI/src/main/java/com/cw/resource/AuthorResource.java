@@ -5,6 +5,7 @@
 package com.cw.resource;
 
 import com.cw.dao.AuthorDAO;
+import com.cw.exception.AuthorNotFoundException;
 import com.cw.model.Author;
 import java.util.List;
 import javax.ws.rs.Consumes;
@@ -38,7 +39,11 @@ public class AuthorResource {
     @GET
     @Path("/{id}")
     public Response getAuthorById(@PathParam("id") Long id) {
-        return authorDAO.getAuthorById(id);
+        Response author = authorDAO.getAuthorById(id);
+           if (author == null) {
+        throw new AuthorNotFoundException("Author with ID " + id + " not found");
+    }
+    return author;
     }
 
     @POST

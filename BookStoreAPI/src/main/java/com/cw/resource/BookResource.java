@@ -5,6 +5,7 @@
 package com.cw.resource;
 
 import com.cw.dao.BookDAO;
+import com.cw.exception.BookNotFoundException;
 import com.cw.model.Book;
 import java.util.List;
 import javax.ws.rs.Consumes;
@@ -38,7 +39,11 @@ public class BookResource {
     @GET
     @Path("/{id}")
     public Response getBookById(@PathParam("id") Long id) {
-        return bookDAO.getBookById(id);
+        Response book = bookDAO.getBookById(id);
+        if(book == null){
+        throw new BookNotFoundException("Book with ID " + id + " not found");
+        }
+        return book;
     }
     
     @POST

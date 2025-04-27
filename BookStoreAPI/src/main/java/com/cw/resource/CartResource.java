@@ -5,6 +5,7 @@
 package com.cw.resource;
 
 import com.cw.dao.CartDAO;
+import com.cw.exception.CartNotFoundException;
 import com.cw.model.Cart;
 import java.util.List;
 import javax.ws.rs.Consumes;
@@ -37,7 +38,11 @@ public class CartResource {
     @GET
     @Path("/{id}")
     public Response getCartById(@PathParam("id") Long id) {
-        return cartDAO.getCartById(id);
+        Response cart = cartDAO.getCartById(id);
+        if(cart == null){
+        throw new CartNotFoundException("Cart with ID " + id + " not found");
+        }
+        return cart;
     }
     
     @POST
